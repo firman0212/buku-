@@ -106,10 +106,19 @@ const books = [
 
 const readingOverlay = document.getElementById('readingRoom');
 
-// 1. Fungsi Masuk (Tombol Buka Perpustakaan)
 function masukPerpustakaan() {
-    const nameInput = document.getElementById('userNameInput');
-    const name = nameInput.value;
+    const nameInput = document.getElementById('userNameInput').value;
+    
+    if (nameInput.trim() !== "") {
+        // 1. Simpan nama ke localStorage
+        localStorage.setItem('mindLibrary_userName', nameInput);
+        
+        // 2. Jalankan fungsi untuk menampilkan konten utama
+        renderUserInterface(nameInput);
+    } else {
+        alert("Silakan masukkan nama panggilanmu terlebih dahulu.");
+    }
+}
 
     if (name.trim() === "") {
         alert("Boleh tahu nama panggilannya dulu, Kak? 😊");
@@ -214,4 +223,20 @@ async function kirimMasukan() {
         btn.innerText = "Kirim Kesan";
         btn.disabled = false;
     }
+}
+function cekSesiPengguna() {
+    const savedName = localStorage.getItem('mindLibrary_userName');
+    
+    if (savedName) {
+        // Jika nama ditemukan, langsung tampilkan konten utama tanpa tanya nama lagi
+        renderUserInterface(savedName);
+    }
+}
+
+// Jalankan pengecekan setiap kali halaman dibuka
+window.onload = cekSesiPengguna;
+function renderUserInterface(name) {
+    document.getElementById('welcomeGate').classList.add('hidden');
+    document.getElementById('mainContent').classList.remove('hidden');
+    document.getElementById('userDisplayName').innerText = name;
 }
