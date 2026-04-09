@@ -1,5 +1,4 @@
-/* --- GLOBAL VARIABLES & RESET --- 
-*/
+/* --- GLOBAL VARIABLES & RESET --- */
 :root {
     --bg-soft: #fbf9f4;
     --sage: #81b29a;
@@ -7,16 +6,12 @@
     --navy: #3d405b;
     --text-dark: #2d3436;
     --paper: #ffffff;
-    --paper-old: #f4ecd8; /* Warna coklat kertas klasik */
+    --paper-old: #f4ecd8;
     --font-heading: 'Playfair Display', serif;
     --font-book: 'Lora', serif;
 }
 
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background-color: var(--bg-soft);
@@ -27,260 +22,117 @@ body {
 
 .hidden { display: none !important; }
 
-/* --- BACKGROUND DECOR (ANIMATED BLOBS) --- 
-*/
+/* --- BACKGROUND DECOR --- */
 .blob {
-    position: fixed; 
-    border-radius: 50%; 
-    z-index: -1;
-    filter: blur(60px); 
-    opacity: 0.4; 
-    animation: move 15s infinite alternate;
+    position: fixed; border-radius: 50%; z-index: -1;
+    filter: blur(60px); opacity: 0.4; animation: move 15s infinite alternate;
 }
+.blob-1 { width: 400px; height: 400px; background: var(--sage); top: -100px; right: -50px; }
+.blob-2 { width: 500px; height: 500px; background: var(--coral); bottom: -150px; left: -100px; animation-delay: 2s; }
+@keyframes move { from { transform: translate(0,0); } to { transform: translate(50px, 80px); } }
 
-.blob-1 { 
-    width: 400px; height: 400px; 
-    background: var(--sage); 
-    top: -100px; right: -50px; 
-}
-
-.blob-2 { 
-    width: 500px; height: 500px; 
-    background: var(--coral); 
-    bottom: -150px; left: -100px; 
-    animation-delay: 2s; 
-}
-
-@keyframes move { 
-    from { transform: translate(0,0); } 
-    to { transform: translate(50px, 80px); } 
-}
-
-/* --- WELCOME GATE (INPUT NAMA) --- 
-*/
+/* --- WELCOME GATE --- */
 .gate-overlay {
-    position: fixed; 
-    inset: 0; 
+    position: fixed; inset: 0; 
     background: linear-gradient(135deg, #a8dadc, #f2cc8f);
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    z-index: 2000;
-    padding: 20px;
+    display: flex; justify-content: center; align-items: center; z-index: 2000;
 }
-
 .gate-content {
-    background: rgba(255, 255, 255, 0.95); 
-    padding: 40px; 
-    border-radius: 30px;
-    text-align: center; 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-    width: 100%; 
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 30px;
+    text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.1); width: 100%; max-width: 400px;
+    display: flex; flex-direction: column; align-items: center; gap: 15px;
 }
-
-.gate-icon { font-size: 2.5rem; margin-bottom: 5px; }
-
 #userNameInput {
-    width: 100%; 
-    padding: 15px; 
-    margin: 10px 0;
-    border: 2px solid #eee;
-    border-radius: 15px; 
-    font-size: 1rem; 
-    outline: none; 
-    transition: 0.3s;
-    text-align: center;
+    width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 15px; 
+    font-size: 1rem; outline: none; transition: 0.3s; text-align: center;
 }
-
-#userNameInput:focus { 
-    border-color: var(--sage); 
-    background: white; 
-}
-
+#userNameInput:focus { border-color: var(--sage); background: white; }
 .btn-enter {
-    background: var(--sage); 
-    color: white; 
-    border: none; 
-    padding: 15px;
-    border-radius: 15px; 
-    cursor: pointer; 
-    width: 100%; 
-    font-weight: bold; 
-    font-size: 1.1rem;
-    transition: 0.3s ease;
-    box-shadow: 0 4px 15px rgba(129, 178, 154, 0.3);
+    background: var(--sage); color: white; border: none; padding: 15px;
+    border-radius: 15px; cursor: pointer; width: 100%; font-weight: bold; 
+    transition: 0.3s ease; box-shadow: 0 4px 15px rgba(129, 178, 154, 0.3);
 }
+.btn-enter:hover { background: var(--navy); transform: translateY(-2px); }
 
-.btn-enter:hover {
-    background: var(--navy);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-}
+/* --- MAIN LAYOUT --- */
+.container { max-width: 1100px; margin: auto; padding: 0 20px; }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 0; }
+.logo { font-family: var(--font-heading); font-size: 1.8rem; color: var(--navy); font-weight: 900; }
+.hero { text-align: center; padding: 40px 0; }
+.hero h2 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); color: var(--navy); }
 
-/* --- MAIN LAYOUT & NAVIGATION --- 
-*/
-.container { 
-    max-width: 1100px; 
-    margin: auto; 
-    padding: 0 20px; 
-    transition: 0.5s; 
-}
-
-nav { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 30px 0; 
-}
-
-.logo { 
-    font-family: var(--font-heading); 
-    font-size: 1.8rem; 
-    color: var(--navy); 
-    font-weight: 900; 
-}
-
-.hero { 
-    text-align: center; 
-    padding: 40px 0; 
-}
-
-.hero h2 { 
-    font-family: var(--font-heading); 
-    font-size: clamp(2rem, 5vw, 3rem); 
-    color: var(--navy); 
-}
-
-/* --- BOOK GRID --- 
-*/
+/* --- BOOK GRID --- */
 .book-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-    gap: 25px; 
-    padding-bottom: 50px; 
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 25px; padding-bottom: 50px; 
 }
-
 .book-card {
-    background: white; 
-    padding: 30px; 
-    border-radius: 25px; 
-    cursor: pointer;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    border: 1px solid rgba(0,0,0,0.03);
+    background: white; padding: 30px; border-radius: 25px; cursor: pointer;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(0,0,0,0.03);
 }
+.book-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
 
-.book-card:hover { 
-    transform: translateY(-10px); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
-}
-
-/* --- READING MODE & PAPER LOOK --- 
-*/
+/* --- READING MODE --- */
 .reading-overlay {
-    position: fixed; 
-    inset: 0;
-    background: var(--bg-soft);
-    z-index: 1500; 
-    overflow-y: auto;
-    padding: 20px;
+    position: fixed; inset: 0; background: var(--bg-soft); z-index: 1500; 
+    overflow-y: auto; padding: 20px;
 }
+.reading-container { max-width: 800px; margin: auto; padding-bottom: 100px; }
 
-.reading-container { 
-    max-width: 800px; 
-    margin: auto; 
-    padding-bottom: 100px; 
+/* Tombol Kembali ke Rak */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 12px rgba(61, 64, 91, 0.2);
+}
+.btn-back:hover {
+    background: var(--sage);
+    transform: translateX(-5px);
+    box-shadow: 0 6px 15px rgba(129, 178, 154, 0.3);
 }
 
 .paper {
-    background: var(--paper-old); /* Warna coklat kertas */
+    background: var(--paper-old);
     padding: clamp(30px, 5vw, 60px); 
     border-radius: 20px; 
-    margin-top: 20px;
     box-shadow: inset 0 0 50px rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.05);
     border: 1px solid #e0d5ba;
 }
-
 .reading-text { 
-    font-family: var(--font-book); 
-    font-size: 1.2rem; 
-    line-height: 1.8; 
-    color: #4a4031; /* Coklat gelap agar nyaman dibaca */
-    text-align: justify; 
-    white-space: pre-line; 
+    font-family: var(--font-book); font-size: 1.2rem; line-height: 1.8; 
+    color: #4a4031; text-align: justify; white-space: pre-line; 
 }
 
-/* --- FEEDBACK SECTION --- 
-*/
+/* --- FEEDBACK SECTION --- */
 .feedback-section {
-    margin-top: 40px; 
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 15px;
+    margin-top: 40px; padding: 20px;
+    background: rgba(255, 255, 255, 0.3); border-radius: 15px;
     border: 1px dashed var(--sage);
 }
-
 #userFeedback {
-    width: 100%; 
-    height: 80px; /* Ukuran diperkecil */
-    padding: 12px;
-    border-radius: 10px; 
-    border: 1px solid #d1c7ac;
-    background: #faf7ed;
-    font-family: var(--font-book); 
-    resize: none; 
-    outline: none; 
-    margin-bottom: 10px;
-    font-size: 0.95rem;
+    width: 100%; height: 80px; padding: 12px; border-radius: 10px; 
+    border: 1px solid #d1c7ac; background: #faf7ed;
+    font-family: var(--font-book); resize: none; outline: none; 
+    margin-bottom: 10px; font-size: 0.95rem;
 }
-
 .btn-send {
-    background: var(--sage); 
-    color: white; 
-    border: none; 
-    padding: 10px 25px; 
-    border-radius: 10px; 
-    cursor: pointer; 
-    font-weight: bold; 
-    font-family: 'Varela Round', sans-serif;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(129, 178, 154, 0.3);
+    background: var(--sage); color: white; border: none; 
+    padding: 10px 25px; border-radius: 10px; cursor: pointer; 
+    font-weight: bold; transition: 0.3s;
 }
+.btn-send:hover { background: var(--navy); transform: translateY(-2px); }
 
-.btn-send:hover {
-    background: var(--navy);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-/* --- FOOTER & ANIMATIONS --- 
-*/
-.app-footer {
-    text-align: center; 
-    padding: 40px 0;
-    color: #a0a0a0; 
-    font-size: 0.85rem;
-}
-
-.fade-in-up { 
-    animation: fadeInUp 0.6s ease-out forwards; 
-}
-
-@keyframes fadeInUp { 
-    from { opacity: 0; transform: translateY(20px); } 
-    to { opacity: 1; transform: translateY(0); } 
-}
-
-.pulse { 
-    animation: pulse 2s infinite; 
-}
-
-@keyframes pulse { 
-    0% { box-shadow: 0 0 0 0 rgba(129, 178, 154, 0.4); } 
-    70% { box-shadow: 0 0 0 15px rgba(129, 178, 154, 0); } 
-    100% { box-shadow: 0 0 0 0 rgba(129, 178, 154, 0); } 
-}
+/* --- FOOTER & ANIMATIONS --- */
+.app-footer { text-align: center; padding: 40px 0; color: #a0a0a0; font-size: 0.85rem; }
+.fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
