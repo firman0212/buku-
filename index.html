@@ -13,13 +13,18 @@
     <div class="blob blob-2"></div>
 
     <div id="welcomeGate" class="gate-overlay">
-        <div class="gate-content fade-in-up">
-            <span class="gate-icon bounce">🌿</span>
-            <h1>MindLibrary</h1>
-            <p>Selamat datang, Sahabat. Masukkan nama panggilanmu untuk memulai perjalanan tenang hari ini.</p>
-            <input type="text" id="userNameInput" placeholder="Nama panggilanku..." autocomplete="off">
-     <div id="welcomeScreen" class="book-slide">
-    <button onclick="masukPerpustakaan()">Masuk Perpustakaan</button>
+       <div class="gate-content fade-in-up">
+    <span class="gate-icon">🌿</span>
+    <h1>MindLibrary</h1>
+    <p>Selamat datang, Sahabat. Masukkan nama panggilanmu...</p>
+    
+    <div class="input-wrapper">
+        <input type="text" id="userNameInput" placeholder="Nama panggilanku..." autocomplete="off">
+    </div>
+
+    <button onclick="masukPerpustakaan()" class="btn-enter-new">
+        Mulai Menjelajah
+    </button>
 </div>
     
 
