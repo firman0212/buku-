@@ -232,11 +232,3 @@ function cekSesiPengguna() {
         renderUserInterface(savedName);
     }
 }
-
-// Jalankan pengecekan setiap kali halaman dibuka
-window.onload = cekSesiPengguna;
-function renderUserInterface(name) {
-    document.getElementById('welcomeGate').classList.add('hidden');
-    document.getElementById('mainContent').classList.remove('hidden');
-    document.getElementById('userDisplayName').innerText = name;
-}
