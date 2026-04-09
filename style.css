@@ -34,9 +34,36 @@ body {
     position: fixed; inset: 0; background: linear-gradient(135deg, #a8dadc, #f2cc8f);
     display: flex; justify-content: center; align-items: center; z-index: 2000;
 }
+/* Pastikan container bisa menampung semua isi */
 .gate-content {
-    background: rgba(255, 255, 255, 0.95); padding: 50px; border-radius: 30px;
-    text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.1); width: 90%; max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Memberi jarak otomatis antar elemen */
+    min-height: auto; 
+    padding: 40px;
+}
+
+/* Gaya Tombol yang Pasti Kelihatan */
+.btn-enter-new {
+    background-color: #4A6741; /* Warna hijau tua yang kontras */
+    color: white !important;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%; /* Supaya selebar input */
+    box-shadow: 0 4px 15px rgba(74, 103, 65, 0.3);
+    transition: all 0.3s ease;
+    display: block; /* Memastikan bukan hidden */
+    margin-top: 10px;
+}
+
+.btn-enter-new:hover {
+    background-color: #3d5435;
+    transform: translateY(-2px);
 }
 #userNameInput {
     width: 100%; padding: 15px; margin: 25px 0; border: 2px solid #eee;
