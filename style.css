@@ -31,181 +31,138 @@ body {
 
 /* --- Welcome Gate --- */
 .gate-overlay {
-    position: fixed; inset: 0; background: linear-gradient(135deg, #a8dadc, #f2cc8f);
+    position: fixed; inset: 0; 
+    background: linear-gradient(135deg, #a8dadc, #f2cc8f);
     display: flex; justify-content: center; align-items: center; z-index: 2000;
+    padding: 20px;
 }
-/* Pastikan container bisa menampung semua isi */
+
 .gate-content {
+    background: rgba(255, 255, 255, 0.95); 
+    padding: 40px; 
+    border-radius: 30px;
+    text-align: center; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+    width: 100%; 
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Memberi jarak otomatis antar elemen */
-    min-height: auto; 
-    padding: 40px;
+    gap: 15px; /* Jarak antar elemen lebih konsisten */
 }
 
-/* Gaya Tombol yang Pasti Kelihatan */
-.btn-enter-new {
-    background-color: #4A6741; /* Warna hijau tua yang kontras */
-    color: white !important;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 12px;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
-    width: 100%; /* Supaya selebar input */
-    box-shadow: 0 4px 15px rgba(74, 103, 65, 0.3);
-    transition: all 0.3s ease;
-    display: block; /* Memastikan bukan hidden */
-    margin-top: 10px;
-}
+.gate-icon { font-size: 2.5rem; margin-bottom: 5px; }
 
-.btn-enter-new:hover {
-    background-color: #3d5435;
-    transform: translateY(-2px);
-}
 #userNameInput {
-    width: 100%; padding: 15px; margin: 25px 0; border: 2px solid #eee;
-    border-radius: 15px; font-size: 1rem; outline: none; transition: 0.3s;
-}
-#userNameInput:focus { border-color: var(--sage); }
-.btn-enter {
-    background: var(--sage); color: white; border: none; padding: 15px;
-    border-radius: 15px; cursor: pointer; width: 100%; font-weight: bold; font-size: 1.1rem;
+    width: 100%; 
+    padding: 15px; 
+    margin: 10px 0; /* Dikurangi agar tidak memakan ruang berlebih */
+    border: 2px solid #eee;
+    border-radius: 15px; 
+    font-size: 1rem; 
+    outline: none; 
+    transition: 0.3s;
+    text-align: center;
 }
 
-/* --- Animations --- */
-.fade-in { animation: fadeIn 1s ease; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.fade-in-up { animation: fadeInUp 0.8s ease; }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.slide-in-bottom { animation: slideIn 0.6s ease-out; }
-@keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.bounce { animation: bounce 2s infinite; }
-@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.pulse { animation: pulse 2s infinite; }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(129, 178, 154, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(129, 178, 154, 0); } 100% { box-shadow: 0 0 0 0 rgba(129, 178, 154, 0); } }
+#userNameInput:focus { border-color: var(--sage); background: white; }
+
+/* Tombol Utama (Gunakan class ini di HTML: btn-enter) */
+.btn-enter {
+    background: var(--sage); 
+    color: white; 
+    border: none; 
+    padding: 15px;
+    border-radius: 15px; 
+    cursor: pointer; 
+    width: 100%; 
+    font-weight: bold; 
+    font-size: 1.1rem;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(129, 178, 154, 0.3);
+}
+
+.btn-enter:hover {
+    background: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
 
 /* --- Main Layout --- */
 .container { max-width: 1100px; margin: auto; padding: 0 20px; transition: 0.5s; }
-.container.blur-bg { filter: blur(10px);}
 nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 0; }
-.logo { font-family: var(--font-heading); font-size: 1.8rem; color: var(--navy); }
-.hero { text-align: center; padding: 50px 0; }
-.hero h2 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 10px; color: var(--navy); }
+.logo { font-family: var(--font-heading); font-size: 1.8rem; color: var(--navy); font-weight: 900; }
+
+.hero { text-align: center; padding: 40px 0; }
+.hero h2 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); color: var(--navy); }
 
 /* --- Book Grid --- */
-.book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding-bottom: 80px; }
-.book-card {
-    background: white; padding: 35px; border-radius: 25px; cursor: pointer;
-    transition: 0.4s; border: 1px solid rgba(0,0,0,0.03); position: relative;
+.book-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 25px; 
+    padding-bottom: 50px; 
 }
-.book-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--coral); }
-.book-card h3 { font-family: var(--font-heading); margin: 15px 0; font-size: 1.5rem; color: var(--navy); }
-.card-tag { color: var(--sage); font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+
+.book-card {
+    background: white; padding: 30px; border-radius: 25px; cursor: pointer;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    border: 1px solid rgba(0,0,0,0.03);
+}
+.book-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
 
 /* --- Reading Mode --- */
 .reading-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(253, 250, 245, 0.95); /* Sedikit transparan */
-    backdrop-filter: blur(10px); /* Ini yang membuat efek blur di belakang */
-    z-index: 1500; /* Harus angka besar */
-    overflow-y: auto;
+    position: fixed; inset: 0;
+    background: var(--bg-soft);
+    z-index: 1500; overflow-y: auto;
+    padding: 20px;
 }
 
-.reading-container { max-width: 750px; margin: auto; }
-.progress-container { width: 100%; height: 5px; background: #eee; margin-top: 15px; border-radius: 10px; }
-.progress-bar { height: 100%; background: var(--sage); width: 0%; border-radius: 10px; transition: 0.2s; }
-.btn-back { background: var(--navy); color: white; border: none; padding: 12px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-.btn-back:hover { background: var(--sage); }
+.reading-container { max-width: 800px; margin: auto; padding-bottom: 100px; }
 
 .paper {
-    background: var(--paper); padding: 60px 70px; border-radius: 20px; margin-top: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    background: var(--paper); 
+    padding: clamp(30px, 5vw, 60px); 
+    border-radius: 25px; 
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
-.book-header { text-align: center; margin-bottom: 40px; }
-.paper h1 { font-family: var(--font-heading); font-size: 2.8rem; margin-bottom: 10px; color: var(--navy); }
-.author-meta { color: var(--sage); text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 0.9rem; }
-.divider { font-size: 2.5rem; color: var(--coral); margin: 20px 0; }
-.reading-text { font-family: var(--font-book); font-size: 1.3rem; line-height: 2; color: #333; text-align: justify; white-space: pre-line; }
-.book-footer { margin-top: 50px; text-align: center; color: #bbb; border-top: 1px solid #f0f0f0; padding-top: 20px; font-style: italic; }
 
-@media (max-width: 600px) {
-    .paper { padding: 40px 25px; }
-    .paper h1 { font-size: 2rem; }
+.reading-text { 
+    font-family: var(--font-book); 
+    font-size: 1.2rem; 
+    line-height: 1.8; 
+    color: #333; 
+    text-align: justify; 
+    white-space: pre-line; 
 }
-/* ... tambahkan ini di bagian paling bawah file style.css ... */
 
-/* Gaya Section Masukan */
+/* --- Feedback & Footer --- */
 .feedback-section {
-    margin-top: 40px;
-    padding: 30px;
-    background: #f9fbfb;
-    border-radius: 15px;
+    margin-top: 40px; padding: 25px;
+    background: #f9fbfb; border-radius: 20px;
     border: 1px dashed var(--sage);
 }
 
-.feedback-section h4 {
-    font-family: var(--font-heading);
-    margin-bottom: 15px;
-    color: var(--navy);
-}
-
 #userFeedback {
-    width: 100%;
-    height: 80px;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    font-family: var(--font-book);
-    resize: none;
-    outline: none;
-    margin-bottom: 10px;
+    width: 100%; height: 100px; padding: 15px;
+    border-radius: 12px; border: 1px solid #ddd;
+    font-family: inherit; resize: none; outline: none; margin: 15px 0;
 }
 
-#userFeedback:focus {
-    border-color: var(--sage);
-}
-
-.btn-send {
-    background: var(--sage);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn-send:hover {
-    background: var(--navy);
-}
-
-/* Gaya Footer Versi */
 .app-footer {
-    text-align: center;
-    padding: 60px 0 40px 0;
-    margin-top: 50px;
-    color: #a0a0a0;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
+    text-align: center; padding: 40px 0;
+    color: #a0a0a0; font-size: 0.85rem;
 }
 
-.footer-line {
-    width: 50px;
-    height: 2px;
-    background: var(--coral);
-    margin: 0 auto 20px auto;
-    border-radius: 2px;
-}
+/* --- Animations --- */
+.fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-.app-footer p {
-    margin: 5px 0;
-}
-
-.app-footer strong {
-    color: var(--navy);
+.pulse { animation: pulse 2s infinite; }
+@keyframes pulse { 
+    0% { box-shadow: 0 0 0 0 rgba(129, 178, 154, 0.4); } 
+    70% { box-shadow: 0 0 0 15px rgba(129, 178, 154, 0); } 
+    100% { box-shadow: 0 0 0 0 rgba(129, 178, 154, 0); } 
 }
