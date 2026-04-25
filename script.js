@@ -61,6 +61,105 @@ const books = [
         content: `Apa yang kamu beri ke alam semesta, itu yang akan kembali padamu.\n\nTebarkan kebaikan, berikan senyuman, dan bantu orang lain tanpa pamrih. Energi positif adalah magnet bagi peluang-peluang baru.\n\nSaat kamu memilih untuk optimis, kamu sedang membuka pintu bagi keajaiban untuk masuk ke hidupmu. Hari ini adalah hari yang luar biasa untuk memulai hal baik!`
     }
 ];
+// =========================
+// BOOK DATABASE
+// =========================
+
+const books = [
+    {
+        title: "Seni Beristirahat",
+        author: "Ketenangan Jiwa",
+        tag: "Psikologi",
+        content: `Ambil napas pelan...
+
+Beristirahat bukan kemunduran, tapi pemulihan.
+
+Kamu tidak harus selalu produktif untuk menjadi berharga.`
+    },
+    {
+        title: "Mencintai Retak di Diri",
+        author: "Self-Love Guide",
+        tag: "Self Love",
+        content: `Luka bukan kelemahan.
+
+Luka adalah bukti bahwa kamu pernah berjuang.
+
+Dan kamu masih di sini.`
+    },
+    {
+        title: "The Alchemist",
+        author: "Paulo Coelho",
+        tag: "Spesial",
+        content: `Ketika kamu menginginkan sesuatu,
+semesta akan membantu kamu mencapainya.
+
+Tapi kamu harus mulai berjalan.`
+    }
+];
+
+// =========================
+// STATE
+// =========================
+
+let currentIndex = 0;
+
+// =========================
+// RENDER BOOKS
+// =========================
+
+function renderBooks() {
+    const shelf = document.getElementById("bookShelf");
+    if (!shelf) return;
+
+    shelf.innerHTML = "";
+
+    books.forEach((b, i) => {
+        const div = document.createElement("div");
+        div.className = "book-card";
+        div.innerHTML = `
+            <div class="card-tag">${b.tag}</div>
+            <h3>${b.title}</h3>
+            <p>${b.author}</p>
+            <div style="margin-top:15px;color:var(--accent)">Baca →</div>
+        `;
+
+        div.onclick = () => openBook(i);
+        shelf.appendChild(div);
+    });
+}
+
+// =========================
+// OPEN BOOK
+// =========================
+
+function openBook(i) {
+    currentIndex = i;
+    const b = books[i];
+
+    document.getElementById("readTitle").innerText = b.title;
+    document.getElementById("readAuthor").innerText = b.author;
+    document.getElementById("readBody").innerText = b.content;
+
+    document.getElementById("readingRoom").classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+}
+
+// =========================
+// CLOSE BOOK
+// =========================
+
+function tutupBuku() {
+    document.getElementById("readingRoom").classList.add("hidden");
+    document.body.style.overflow = "auto";
+}
+
+// =========================
+// INIT
+// =========================
+
+window.onload = () => {
+    renderBooks();
+};
 
 // --- LOGIKA APLIKASI ---
 
