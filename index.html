@@ -1,97 +1,63 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindLibrary | Premium Reading Experience</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=Varela+Round&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindLibrary</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+<!-- BACKGROUND -->
+<div class="bg"></div>
 
-    <div id="welcomeGate" class="gate-overlay">
-        <div class="gate-content fade-in-up">
-            <span class="gate-icon">🌿</span>
-            <h1>MindLibrary</h1>
-            <p>Selamat datang. Tolong masukkan nama panggilanmu untuk memulai perjalanan tenang hari ini.</p>
-            
-            <div class="input-wrapper">
-                <input type="text" id="userNameInput" placeholder="Namaku adalah..." autocomplete="off">
-            </div>
+<!-- GATE -->
+<div id="welcomeGate" class="gate">
+    <div class="gate-card">
+        <h1>🌿 MindLibrary</h1>
+        <p>Ruang tenang untuk pikiranmu</p>
 
-            <button onclick="masukPerpustakaan()" class="btn-enter pulse">
-                Mulai
-            </button>
-        </div>
+        <input id="userNameInput" placeholder="Namamu..." />
+        <button onclick="masukPerpustakaan()">Mulai</button>
     </div>
+</div>
 
-    <div id="mainContent" class="container hidden">
-        <header class="fade-in">
-            <nav>
-                <div class="logo">MindLibrary.</div>
-                <div class="user-greet">Halo, <span id="userDisplayName"></span>! 👋</div>
-            </nav>
-            <div class="hero">
-                <h2>Ruang Teduh Pikiran</h2>
-                <p>Temukan inspirasi dan ketenangan dalam setiap baris kalimat.</p>
-            </div>
-        </header>
+<!-- MAIN -->
+<div id="mainContent" class="container hidden">
 
-        <section id="bookShelf" class="book-grid"></section>
+    <header class="header">
+        <h1>MindLibrary</h1>
+        <p>Halo, <span id="userDisplayName"></span> ✨</p>
+    </header>
 
-        <footer class="app-footer">
-            <div class="footer-line"></div>
-            <p>Dibuat oleh Firman</p>
-            <p><strong>MindLibrary</strong> &copy;Wanayasa 2026 | Versi 1.5</p>
-            <small>Purwakarta, Indonesia</small>
-        </footer>
-    </div>
+    <section id="bookShelf" class="grid"></section>
 
-    <section id="readingRoom" class="reading-overlay hidden">
-        <div class="reading-container">
-            <div class="reading-nav">
-                <button class="btn-back" onclick="tutupBuku()">← Kembali ke Rak</button>
-                <div class="progress-container">
-                    <div class="progress-bar" id="myBar"></div>
-                </div>
-            </div>
-            
-            <article class="paper slide-in-bottom">
-                <div class="book-header">
-                    <h1 id="readTitle"></h1>
-                    <p class="author-meta" id="readAuthor"></p>
-                    <div class="divider">❦</div>
-                </div>
-                
-                <div id="readBody" class="reading-text"></div>
-                
-                <div class="feedback-section">
-                    <h4>Tolong tinggalkan pesan masukan disini?</h4>
-                    <textarea id="userFeedback" placeholder="Tuliskan pesan atau kesanmu di sini..."></textarea>
-                    <button onclick="kirimMasukan()" class="btn-send">Kirim Kesan</button>
-                </div>
+</div>
 
-                <div class="book-footer">
-                    <p>Terimakasih telah membaca hari ini, semoga harimu menyenangkan.</p>
-                </div>
-            </article>
-        </div>
-    </section>
-<div id="bookShelf" class="book-grid"></div>
-
-<div id="readingRoom" class="reading-overlay hidden">
+<!-- READER -->
+<div id="readingRoom" class="reader hidden">
     <div class="paper">
+        <button class="close" onclick="tutupBuku()">✕</button>
+
         <h2 id="readTitle"></h2>
         <p id="readAuthor"></p>
 
         <div id="readBody"></div>
 
-        <button onclick="tutupBuku()">Tutup</button>
+        <textarea id="userFeedback" placeholder="Tulis kesan..."></textarea>
+        <button onclick="kirimMasukan()">Kirim</button>
     </div>
 </div>
-    <script src="script.js"></script>
+
+<!-- WATERMARK -->
+<div class="watermark">
+    <p>Dibuat oleh firman</p>
+    Wanayasa ✦ 2026
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
