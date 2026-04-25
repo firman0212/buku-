@@ -1,59 +1,65 @@
-const books = [
-{
-title: "Seni Beristirahat",
-author: "Ketenangan Jiwa",
-content: "Istirahat bukan kemunduran, tapi pemulihan."
-},
-{
-title: "Mencintai Retak di Diri",
-author: "Self Love",
-content: "Luka adalah bagian dari keindahanmu."
-},
-{
-title: "The Alchemist",
-author: "Paulo Coelho",
-content: "Ketika kamu menginginkan sesuatu, semesta akan membantu."
-}
-];
+const NOMOR_WA_PEMBUAT = "6281383159694"; // GANTI NOMOR ANDA
 
-function renderBooks(){
-const shelf = document.getElementById("bookShelf");
-shelf.innerHTML = "";
-
-books.forEach((b,i)=>{
-const card = document.createElement("div");
-card.className = "card";
-card.innerHTML = `<h3>${b.title}</h3><p>${b.author}</p>`;
-card.onclick = ()=>openBook(i);
-shelf.appendChild(card);
-});
+function unlockExperience() {
+    const name = document.getElementById('userName').value.trim();
+    if (name === "") {
+        showModal("Perhatian", "Mohon sebutkan nama Anda.");
+        return;
+    }
+    document.getElementById('displayName').innerText = name;
+    document.getElementById('gatekeeper').style.opacity = "0";
+    setTimeout(() => {
+        document.getElementById('gatekeeper').classList.add('hidden');
+        document.getElementById('mainContent').classList.remove('hidden');
+        createParticles();
+    }, 1000);
 }
 
-function masukPerpustakaan(){
-const name = document.getElementById("userNameInput").value;
-if(!name) return;
-
-document.getElementById("userDisplayName").innerText = name;
-document.getElementById("welcomeGate").classList.add("hidden");
-document.getElementById("mainContent").classList.remove("hidden");
-
-renderBooks();
+function showModal(title, message) {
+    const modal = document.getElementById('customAlert');
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('alertMessage').innerText = message;
+    modal.classList.remove('hidden');
+    setTimeout(() => modal.style.opacity = "1", 10);
 }
 
-function openBook(i){
-const b = books[i];
-
-document.getElementById("readTitle").innerText = b.title;
-document.getElementById("readAuthor").innerText = b.author;
-document.getElementById("readBody").innerText = b.content;
-
-document.getElementById("readingRoom").classList.remove("hidden");
+function closeAlert() {
+    const modal = document.getElementById('customAlert');
+    modal.style.opacity = "0";
+    setTimeout(() => modal.classList.add('hidden'), 300);
 }
 
-function tutupBuku(){
-document.getElementById("readingRoom").classList.add("hidden");
+function sendToWhatsApp() {
+    const name = document.getElementById('displayName').innerText;
+    const msg = document.getElementById('replyMessage').value.trim();
+
+    if (msg === "") {
+        showModal("Pesan Kosong", "Silakan tuliskan isi hati Anda sebelum mengirim.");
+        return;
+    }
+
+    const fullMessage = `Halo! Saya ${name}.\n\nBalasan saya:\n"${msg}"`;
+    const encoded = encodeURIComponent(fullMessage);
+    
+    // Buka WhatsApp
+    window.open(`https://wa.me/${NOMOR_WA_PEMBUAT}?text=${encoded}`, '_blank');
+    
+    // Tampilkan pesan terkirim
+    setTimeout(() => {
+        showModal("Berhasil", "Terima kasih! Pesan Anda telah diteruskan melalui WhatsApp.");
+        document.getElementById('replyMessage').value = ""; // Kosongkan form
+    }, 1000);
 }
 
-function kirimMasukan(){
-alert("Terkirim ✨");
+function createParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 40; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 3 + 1 + 'px';
+        p.style.width = size; p.style.height = size;
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.animationDuration = (Math.random() * 5 + 7) + 's';
+        container.appendChild(p);
+    }
 }
