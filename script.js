@@ -60,6 +60,30 @@ const books = [
         tag: "Semangat",
         content: `Apa yang kamu beri ke alam semesta, itu yang akan kembali padamu.\n\nTebarkan kebaikan, berikan senyuman, dan bantu orang lain tanpa pamrih. Energi positif adalah magnet bagi peluang-peluang baru.\n\nSaat kamu memilih untuk optimis, kamu sedang membuka pintu bagi keajaiban untuk masuk ke hidupmu. Hari ini adalah hari yang luar biasa untuk memulai hal baik!`
     }
+    {
+    title: "The Alchemist",
+    author: "Paulo Coelho",
+    tag: "Spesial",
+    pages: [
+`Santiago adalah seorang penggembala muda yang bermimpi menemukan harta karun di Piramida Mesir.
+
+Namun perjalanan itu sebenarnya bukan tentang emas, melainkan tentang menemukan dirinya sendiri.
+
+Setiap orang memiliki "Personal Legend" — tujuan hidup yang harus mereka kejar.`,
+
+`Dalam perjalanan, Santiago belajar bahwa alam semesta selalu memberi tanda kepada mereka yang mau mendengarkan.
+
+Ketakutan adalah penghalang terbesar, bukan dunia luar.
+
+Ketika kamu benar-benar menginginkan sesuatu, seluruh semesta akan membantu kamu mencapainya.`,
+
+`Harta terbesar Santiago bukanlah emas di Piramida, tetapi pemahaman bahwa kebahagiaan ada dalam perjalanan, bukan tujuan.
+
+Kehidupan selalu berbicara dengan bahasa tanda-tanda.
+
+Dan hanya hati yang tenang yang bisa memahaminya.`
+    ]
+}
 ];
 
 // --- LOGIKA APLIKASI ---
